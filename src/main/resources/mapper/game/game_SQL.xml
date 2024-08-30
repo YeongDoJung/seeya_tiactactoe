@@ -98,7 +98,7 @@
             DRAW,
             LOSE,
             (@wr := WIN / (WIN + LOSE)) as WinRate,
-            RANK() over (ORDER BY WinRate DESC) as ranker
+            RANK() over (ORDER BY WinRate DESC, WIN DESC) as ranker
         FROM
             t_users_rank_jyd
         LIMIT
