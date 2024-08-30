@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+    <select id="countUserById" parameterType="hashmap" resultType="int">
+        select
+            COUNT(*)
+        from
+            t_users_jyd
+        where
+            USER_ID=#{userId}
+    </select>
+
+    <select id="getUser" parameterType="hashmap" resultType="hashmap">
+        select
+            *
+        from
+            t_users_jyd
+        where
+            USER_ID=#{userId} and
+            USER_PW=#{userPw}
+    </select>
+
+    <select id="countUserByNickname" parameterType="hashmap" resultType="int">
+        select
+            COUNT(*)
+        from
+            t_users_jyd
+        where
+            USER_NICNM=#{userNickname}
+    </select>
+
+    <select id="checkisthisnickname" parameterType="hashmap" resultType="int">
+        select
+            COUNT(*)
+        from
+            t_users_jyd
+        where
+            USER_NICNM=#{userId}
+    </select>
+
+    <select id="getUserByNickname" parameterType="hashmap" resultType="string">
+        select
+            USER_ID
+        from
+            t_users_jyd
+        where
+            USER_NICNM=#{userNickname}
+    </select>
+
+    <select id="getUserByEmail" parameterType="hashmap" resultType="hashmap">
+        select
+            *
+        from
+            t_users_jyd
+        where
+            USER_EML=#{userEmail}
+    </select>
+
+    <insert id="signup" parameterType="hashmap">
+        insert into
+            t_users_jyd
+        (
+            user_id
+            , user_pw
+            , user_nicnm
+            , user_eml
+        )
+        value (
+            #{userId}
+            ,#{userPw}
+            ,#{userNickname}
+            ,#{userEmail}
+        )
+    </insert>
+
+    <select id="getUserIDByEmail" parameterType="hashmap" resultType="hashmap">
+        select
+            USER_ID,
+            USER_NICNM
+          from
+              t_users_jyd
+         where
+             USER_EML=#{userEmail}
+    </select>
+
+    <select id="checkUserByIDandEmail" parameterType="hashmap" resultType="int">
+        select
+            count(*)
+        from
+            t_users_jyd
+        where
+            USER_ID=#{userId} and
+            USER_EMl=#{userEmail}
+    </select>
+
+    <update id="userChangePw" parameterType="hashmap">
+        update
+            t_users_jyd
+        set
+            USER_PW = #{userPw}
+        where
+            USER_ID = #{userId}
+    </update>
+
+    <select id="checkNickname" parameterType="hashmap" resultType="int">
+        select
+            count(*)
+        from
+            t_users_jyd
+        where
+            USER_NICNM = #{newName}
+    </select>
+
+    <update id="userChangeNickname" parameterType="hashmap">
+        update
+            t_users_jyd
+        set
+            USER_NICNM=#{newName}
+        where
+            USER_ID = #{userId}
+    </update>
+
+    <select id="userGameScoreInfo" parameterType="hashmap" resultType="hashmap">
+        select
+            *
+        from
+            t_users_rank_jyd
+        where
+            USER_ID=#{userId}
+    </select>
+
+    <insert id="userGameBaseInfo" parameterType="hashmap">
+        insert into
+            t_users_rank_jyd
+            (USER_ID,
+             WIN,
+             LOSE,
+             DRAW)
+        value
+            (#{userId},
+            0,
+            0,
+            0)
+    </insert>
+
+    <update id="userResetScore" parameterType="hashmap">
+        update
+            t_users_rank_jyd
+        set
+            WIN=0 ,
+            LOSE=0,
+            DRAW=0
+        where
+            USER_Id = #{userId}
+    </update>
+
+    <delete id="userDelete" parameterType="hashmap">
+        delete from
+            t_users_jyd
+        where
+            USER_ID = #{userId}
+    </delete>
+
+    <delete id="userDeleteForeignKey" parameterType="hashmap">
+        delete from
+            t_users_rank_jyd
+        where
+            USER_ID = #{userId}
+    </delete>
+
+    <update id="updateUserScore" parameterType="hashmap">
+        update
+            t_users_rank_jyd
+        set
+            WIN=#{WIN},
+            LOSE=#{LOSE},
+            DRAW=#{DRAW}
+        where
+            USER_ID = #{userId}
+    </update>
+</mapper>

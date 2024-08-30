@@ -1,0 +1,64 @@
+<%@ page pageEncoding="utf-8"%>
+<%
+session.setMaxInactiveInterval(60*60*24*7);
+pageContext.setAttribute("LF","\n");
+%>
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <title>HIRA</title>
+    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="SEEYA INSIGHT - Spirit" name="author" />
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link type="text/css" rel="stylesheet" href="/_plugins/bootstrap/css/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="/_plugins/font-awesome/css/font-awesome.css" />
+
+    <link type="text/css" rel="stylesheet" href="/_css/_font/Century.css" />
+    <link type="text/css" rel="stylesheet" href="/_css/_font/NanumGothic.css" />
+
+    <link type="text/css" rel="stylesheet" href="/_css/style.css" />
+    <link type="text/css" rel="stylesheet" href="/_css/style-responsive.css" />
+    <link type="text/css" rel="stylesheet" href="/_plugins/jquery-ui/jquery-ui.css" />
+    <link type="text/css" rel="stylesheet" href="/_css/theme/blue.css"                        id="theme" />
+    <link type="text/css" rel="stylesheet" href="/_css/_common.css" />
+    <link type="text/css" rel="stylesheet" href="/_css/_aform_print.css" />
+
+    <!-- ================== BEGIN JS ================== -->
+    <%--<script type="text/javascript" src="/_plugins/pace/pace.js"></script>--%>
+
+    <script type="text/javascript" src="/_js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="/_plugins/jquery-ui/jquery-ui.js"></script>
+
+    <script type="text/javascript" src="/_plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="/_js/crossbrowserjs/html5shiv.js"></script>
+    <script type="text/javascript" src="/_js/crossbrowserjs/respond.min.js"></script>
+    <script type="text/javascript" src="/_js/crossbrowserjs/excanvas.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="/_js/modal_dialog.js"></script>
+    <script type="text/javascript" src="/_js/functions.js"></script>
+    <script type="text/javascript" src="/_js/apps.js"></script>
+    <script type="text/javascript" src="/_js/_common.js"></script>
+
+    
+    <script type="text/javascript" src="/_js/message.js"></script>
+
+    <link href="/_plugins/bootstrap-select/bootstrap-select.css" rel="stylesheet" />
+    <script src="/_plugins/bootstrap-select/bootstrap-select.js"></script>
+    
+    
+    <%@ include file="/_common/include.jspf" %>

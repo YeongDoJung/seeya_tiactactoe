@@ -1,0 +1,11 @@
+<%@ page pageEncoding="utf-8"%>
+<!-- begin scroll to top btn -->
+<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+<!-- end scroll to top btn -->
+
+<div class="footer ">
+    copyright@SEEYA INSIGHT
+</div>
+<form id="commonForm" name="commonForm">
+    <input type="hidden" name="isComsubmit" value="1">
+</form>

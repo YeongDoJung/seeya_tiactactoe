@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="game">
+
+    <select id="getGameInfo" parameterType="hashmap" resultType="hashmap">
+        SELECT
+            BOARD,
+            PLAYER1,
+            PLAYER2,
+            STATUS
+        FROM
+            t_game_jyd
+        WHERE
+            SEQ = #{seq}
+    </select>
+
+    <update id="updateGameInfo" parameterType="hashmap">
+        update
+            t_game_jyd
+        set
+            BOARD = #{board}
+        where
+            SEQ = #{seq}
+    </update>
+
+    <update id="endGame" parameterType="hashmap">
+        update
+            t_game_jyd
+        set
+            STATUS = 'e'
+        where
+            SEQ = #{seq}
+    </update>
+
+    <select id="gameList" parameterType="hashmap" resultType="hashmap">
+        SELECT
+            SEQ,
+            TITLE,
+            BOARD,
+            PLAYER1,
+            STATUS
+        FROM
+            t_game_jyd
+        ORDER BY
+            FIELD(STATUS, 'w', 'p', 'e'),
+            SEQ
+            DESC
+        LIMIT
+            #{nowPage}, #{listCount}
+    </select>
+
+    <select id="getGameListTotal" resultType="int">
+        select
+            count(*)
+        from
+            t_game_jyd
+    </select>
+
+    <insert id="gameCreate" parameterType="hashmap">
+        insert into
+            t_game_jyd
+            (
+             TITLE,
+             BOARD,
+             PLAYER1,
+             STATUS,
+             RGTR_ID,
+             REG_DT
+            )
+        value
+            (
+            #{title},
+            #{board},
+            #{player1},
+            #{status},
+            #{rgtr_id},
+            #{reg_dt}
+            )
+        <selectKey keyProperty="SEQ" resultType="int" order="AFTER">
+            select LAST_INSERT_ID() as seq
+        </selectKey>
+    </insert>
+
+    <update id="gameJoin" parameterType="hashmap">
+        update
+            t_game_jyd
+        set
+            PLAYER2 = #{player2},
+            STATUS = 'p'
+        where
+            SEQ = #{seq}
+    </update>
+
+    <select id="getRanker" resultType="hashmap">
+        SELECT
+            USER_ID,
+            WIN,
+            DRAW,
+            LOSE,
+            (@wr := WIN / (WIN + LOSE)) as WinRate,
+            RANK() over (ORDER BY WinRate DESC) as ranker
+        FROM
+            t_users_rank_jyd
+        LIMIT
+            0, 5
+    </select>
+
+</mapper>

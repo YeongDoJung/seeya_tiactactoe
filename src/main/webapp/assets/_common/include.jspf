@@ -1,0 +1,28 @@
+<%@ page pageEncoding="utf-8"%>
+<%
+    String strMyID           = (String) session.getAttribute("strMyID");
+	String strMyName         = (String) session.getAttribute("strMyName");
+	String strMyTeamName     = (String) session.getAttribute("strMyTeamName");     // 부서
+	String strMyWorkCode     = (String) session.getAttribute("strMyWorkCode");     // 업무코드
+	String strMyPermName     = (String) session.getAttribute("strMyPermName");     // 권한명
+	String strMyPerm         = (String) session.getAttribute("strMyPerm");         // 권한코드
+    String strMyCorpNum      = (String) session.getAttribute("strMyCorpNum");      // 직번
+    String strMyLevelName    = (String) session.getAttribute("strMyLevelName");    // 직위
+    String strMyPositionName = (String) session.getAttribute("strMyPositionName"); // 직급
+    String strMyTel          = (String) session.getAttribute("strMyTel");          // 전화번호
+    String strMyWorkGroup    = (String) session.getAttribute("strMyWorkGroup");    // 업무권한그룹코드
+
+    if (strMyID == null || strMyID.equals("")) {
+%>
+        <script language="JavaScript">
+            // location.href="/";
+        </script>
+<%
+    }else{
+%>
+        <script language="JavaScript">
+            console.log("로그인ID : <%=strMyID%>");
+        </script>
+<%
+    }
+%>

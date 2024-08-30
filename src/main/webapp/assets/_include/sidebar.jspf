@@ -1,0 +1,205 @@
+<%@ page pageEncoding="utf-8"%>
+<div id="sidebar" class="sidebar">
+    <!-- begin sidebar scrollbar -->
+    <div data-scrollbar="true" data-height="100%" style="position:relative">
+        <!-- begin sidebar user -->
+        <ul class="nav">
+            <li class="nav-profile">
+                <!--<div class="image">-->
+                <!--<a href="javascript:;"><img src="/assets/img/user-13.jpg" alt="" /></a>-->
+                <!--</div>-->
+                <div class="info text-center">
+                    <a href="/"><font color="#fffff0">
+                    <%
+                        if (strMyPerm.equals("P100")) {
+                            out.println("보안서비스");
+                        }else{
+                            out.println("정보보호증적관리시스템");
+                        }
+                    %>
+                    </font>
+                    </a>
+                </div>
+            </li>
+        </ul>
+        <!-- end sidebar user -->
+
+        <!-- begin sidebar nav -->
+        <ul class="nav">
+            <li class="nav-header">&nbsp;</li>
+
+           <!--  <li><a href="/Dashboard.do"><i class="fa fa-tachometer"></i> <span>상황판</span></a></li> -->
+<!-- start -->
+<%
+    java.util.List sideMenu  = (java.util.List)request.getAttribute("sideMenu");
+    String menuCode        = (String) session.getAttribute("menuCode");
+    //String menuCode  = "020020020";
+    
+    String MENU_CODE   = null;
+    String MENU_NAME1  = null;
+    String MENU_NAME2  = null;
+    String MENU_NAME3  = null;
+    String MENU_URL    = null;
+    String ICON        = null;
+    
+    String tmpMenuName1 = "";
+    String tmpMenuName2 = "";
+    String tmpMenuName3 = "";
+    
+    String css_active1  = "";
+    String css_active2  = "";
+    String css_active3  = "";
+    
+    String mCode1 = ""; // 현재 메뉴 확인 대분류
+    String mCode2 = ""; // 현재 메뉴 확인 중분류
+    String rCode1  = menuCode.substring(0, 3); // 대분류
+    String rCode2  = menuCode.substring(0, 6); // 대분류 + 중분류
+
+    String strSideMenu = "";
+
+    // 사용자 권한이 P100(사용자)가 아닌 경우에만 HISTORY 출력
+   if (strMyPerm.equals("P100")) {
+   }else{
+        strSideMenu = "<li><a href='/Dashboard.do'><i class='fa fa-tachometer'></i> <span>HISTORY</span></a></li>";
+
+        if (menuCode.equals("010000000")) {
+            strSideMenu = "<li class='active'><a href='/Dashboard.do'><i class='fa fa-tachometer'></i> <span>HISTORY</span></a></li>";
+        }
+    }
+    
+    if(sideMenu != null && sideMenu.size() > 0){
+    
+        for(int i = 0 ; i < sideMenu.size() ; i++){
+            java.util.HashMap hmap = (java.util.HashMap)sideMenu.get(i);
+    
+            MENU_CODE  = (String)hmap.get("MENU_CODE");
+            MENU_NAME1 = (String)hmap.get("MENU_NAME1");
+            MENU_NAME2 = (String)hmap.get("MENU_NAME2");
+            MENU_NAME3 = (String)hmap.get("MENU_NAME3");
+            MENU_URL   = (String)hmap.get("MENU_URL");
+            ICON       = (String)hmap.get("ICON");
+    
+            css_active1  = "";
+            css_active2  = "";
+            css_active3  = "";
+            
+            // 현재 메뉴 확인 : 대분류
+            mCode1 = MENU_CODE.substring(0 , 3);
+            if (mCode1.equals(rCode1)) {
+                css_active1 = "active";
+            }
+            
+            // 현재 메뉴 확인 : 중분류
+            mCode2 = MENU_CODE.substring(0 , 6);
+            if (mCode2.equals(rCode2)) {
+                css_active2 = "active";
+            }
+            
+            // 현재 메뉴 확인 : 소분류
+            if (MENU_CODE.equals(menuCode)) {
+                css_active3  = "active";
+            }
+            
+            // 대분류명이 temp값과 다르면 대분류 처음부터 시작
+            if (!tmpMenuName1.equals(MENU_NAME1)) {
+            
+                // temp에 값이 있으면 앞 메뉴 태그 닫아주기.
+                if (!tmpMenuName1.equals("")) {
+                    strSideMenu += "</ul></li></ul></li>";
+                }
+                
+                strSideMenu += "<li class='has-sub "+ css_active1 +"'>"+
+                               "    <a href='javascript:;'>"+
+                               "        <div id='"+ mCode1 +"000000'><b class='caret pull-right'></b></div><i class='"+ ICON +"'></i>" +
+                               "            <span>"+ MENU_NAME1 +"</span>"+
+                               "    </a>"+
+                               "    <ul class='sub-menu'>";
+                               
+            }
+            
+            // 중분류명이 temp값과 다르면 중분류 처음부터 시작
+            if (!tmpMenuName2.equals(MENU_NAME2)) {
+                // temp2에 값이 있고 대분류명과 temp1의 값이 같으면 앞 메뉴 태그 닫아주기.
+                if (!tmpMenuName2.equals("") && tmpMenuName1.equals(MENU_NAME1)) {
+                    strSideMenu += "    </ul></li>";
+                }
+                
+                strSideMenu += "        <li class='has-sub "+ css_active2 +"'>"+
+                               "            <a href='javascript:;'>"+
+                               "                <div id='"+ mCode2 +"000'><b class='caret pull-right'></b></div>"+ MENU_NAME2 + "</a>"+
+                               "            </a>"+
+                               "            <ul class='sub-menu'>";
+            }
+    
+            strSideMenu += "                <li class='"+ css_active3 +"'><a href='"+ MENU_URL +"'><div id='"+ MENU_CODE +"'></div>"+ MENU_NAME3 +"</a></li>";
+    
+            tmpMenuName1 = MENU_NAME1;
+            tmpMenuName2 = MENU_NAME2;
+            
+        }// for
+        
+        strSideMenu = strSideMenu + "</ul></li></ul></li>";
+    }
+    
+    out.println(strSideMenu);
+
+%>
+<!-- end -->
+            <%--<li class="bg-purple-darker"><a href="#0" onClick="gotoOldPortal()"><i class="fa fa-external-link"></i> <span>(구) 보안포털</span></a></li>--%>
+
+            <!-- begin sidebar minify button -->
+            <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+            <!-- end sidebar minify button -->
+        </ul>
+        <!-- end sidebar nav -->
+        <div class="logo-history"></div>
+    </div>
+    <!-- end sidebar scrollbar -->
+</div>
+<div class="sidebar-bg"></div>
+
+<script type="text/javascript">
+    // 승인
+    getApprovalCount = function(){
+        $.ajax({
+            type: "POST"
+            , url: "/ajax/getApprovalCount.do"
+            , data: {}
+            , success: function (data) {
+                data = $.parseJSON(data);
+
+                var CompCount = parseInt(data.AppCount.COM_COUNT);
+                var FormCount = parseInt(data.AppCount.FORM_COUNT);
+
+                if (CompCount > 0) {
+                    $("#020000000").html("<span class='badge pull-right'>"+ CompCount + "</span>");
+//                    $("#020020000").html("<span class='badge pull-right'>"+ CompCount + "</span>");
+//                    $("#020020010").html("<span class='badge pull-right'>"+ CompCount + "</span>");
+                }
+
+                if (FormCount > 0) {
+                    $("#030000000").html("<span class='badge pull-right'>"+ FormCount + "</span>");
+//                    $("#030020000").html("<span class='badge pull-right'>"+ FormCount + "</span>");
+//                    $("#030020010").html("<span class='badge pull-right'>"+ FormCount + "</span>");
+                }
+
+            }
+            , error: function (data, status, err) {
+                //alert(data + " : " + status + " : " + err);
+            }
+        }); // ajax
+    }
+
+//    getApprovalCount();
+
+    gotoOldPortal = function(){
+        var param = {
+                      "url": "http://secuweb.hira.or.kr/magicsso/connect_ksign.jsp?returnUrl=%2FSSOLoginProcess.do%3FredirectUrl%3D%2FMain.do"
+                    , "name": "popOldPortal"
+                    , "resizable": 1
+                    }
+//        popup(param);
+        window.open("http://secuweb.hira.or.kr/magicsso/connect_ksign.jsp?returnUrl=%2FSSOLoginProcess.do%3FredirectUrl%3D%2FMain.do");
+    }
+
+</script>

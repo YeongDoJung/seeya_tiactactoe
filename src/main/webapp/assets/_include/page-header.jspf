@@ -1,0 +1,14 @@
+<%@ page pageEncoding="utf-8"%>
+<!-- begin breadcrumb -->
+<!-- ol class="breadcrumb pull-right">
+    <li><a href="javascript:;">Home</a></li>
+    <li>1depth</li>
+    <li>2depth</li>
+    <li class="active">3depth</li>
+</ol -->
+<!-- end breadcrumb -->
+<!-- begin page-header -->
+<h1 class="page-header">${pageTitle }
+    <small></small>
+</h1>
+<!-- end page-header -->

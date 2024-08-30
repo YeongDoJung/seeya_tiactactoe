@@ -1,0 +1,87 @@
+<%@ page pageEncoding="utf-8"%>
+<%
+session.setMaxInactiveInterval(60*60*24*7);
+pageContext.setAttribute("LF","\n");
+%>
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <title>SeeyaInsight</title>
+    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="SEEYA INSIGHT - Spirit" name="author" />
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+<%--    <link type="text/css" rel="stylesheet" href="/assets/_plugins/bootstrap/css/bootstrap.css" />--%>
+<%--    <link type="text/css" rel="stylesheet" href="/assets/_plugins/bootstrap-switch/bootstrap-switch.css" />--%>
+<%--    <link type="text/css" rel="stylesheet" href="/assets/_plugins/font-awesome/css/font-awesome.css" />--%>
+
+<%--    <link type="text/css" rel="stylesheet" href="/assets/_css/_font/Century.css" />--%>
+
+<%--    <link type="text/css" rel="stylesheet" href="/assets/_css/animate.css" />--%>
+
+<%--    <link type="text/css" rel="stylesheet" href="/assets/_plugins/summernote/summernote.css" />--%>
+<%--    <link type="text/css" rel="stylesheet" href="/assets/_css/style.css" />--%>
+<%--    <link type="text/css" rel="stylesheet" href="/assets/_css/style-responsive.css" />--%>
+<%--    <link type="text/css" rel="stylesheet" href="/assets/_plugins/jquery-ui/jquery-ui.css" />--%>
+<%--    <link type="text/css" rel="stylesheet" href="/assets/_css/theme/blue.css"                        id="theme" />--%>
+<%--    <link type="text/css" rel="stylesheet" href="/assets/_plugins/datapicker/datepicker3.css" />--%>
+<%--    <link type="text/css" rel="stylesheet" href="/assets/_css/_common.css" />--%>
+<%--    <link type="text/css" rel="stylesheet" href="/assets/_plugins/bootstrap-ipaddress/bootstrap-ipaddress.css" />--%>
+
+
+    <!-- notification -->
+<%--    <link type="text/css" rel="stylesheet" href="/assets/_plugins/gritter/css/jquery.gritter.css"/>--%>
+<%--    <link type="text/css" rel="stylesheet" href="/assets/_plugins/switchery/switchery.css" />--%>
+<%--    <link type="text/css" rel="stylesheet" href="/assets/_plugins/ekko-lightbox/ekko-lightbox.css">--%>
+    
+    <!-- ================== BEGIN JS ================== -->
+<%--    <script type="text/javascript" src="/assets/_plugins/pace/pace.js"></script>--%>
+
+    <script type="text/javascript" src="/assets/_plugins/jquery/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="/assets/_plugins/jquery-ui/jquery-ui.js"></script>
+
+<%--    <script type="text/javascript" src="/assets/_plugins/bootstrap/js/bootstrap.js"></script>--%>
+<%--    <script type="text/javascript" src="/assets/_plugins/bootstrap-switch/bootstrap-switch.js"></script>--%>
+<%--    <script type="text/javascript" src="/assets/_plugins/datapicker/bootstrap-datepicker.js"></script>--%>
+<%--    <script type="text/javascript" src="/assets/_plugins/jquery-ui/jquery-ui-radio.js"></script>--%>
+
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="/assets/_js/crossbrowserjs/html5shiv.js"></script>
+    <script type="text/javascript" src="/assets/_js/crossbrowserjs/respond.min.js"></script>
+    <script type="text/javascript" src="/assets/_js/crossbrowserjs/excanvas.min.js"></script>
+    <![endif]-->
+
+<%--    <script type="text/javascript" src="/assets/_plugins/slimscroll/jquery.slimscroll.js"></script>--%>
+<%--    <script type="text/javascript" src="/assets/_plugins/gritter/js/jquery.gritter.js"></script>--%>
+
+    <!-- ëª¨ë¬ì°½ -->
+    <script type="text/javascript" src="/assets/_js/modal_dialog.js"></script>
+<%--    <script type="text/javascript" src="/assets/_plugins/bootstrap-ipaddress/bootstrap-ipaddress.js"></script>--%>
+
+<%--    <script type="text/javascript" src="/assets/_plugins/switchery/switchery.js"></script>--%>
+    <!--<script type="text/javascript" src="/assets/_plugins/ekko-lightbox/ekko-lightbox.js"></script>-->
+
+    <script type="text/javascript" src="/assets/_js/functions.js"></script>
+<%--    <script type="text/javascript" src="/assets/_js/apps.js"></script>--%>
+    <script type="text/javascript" src="/assets/_js/_common.js"></script>
+    
+<%--    <script type="text/javascript" src="/assets/_plugins/summernote/summernote.js"></script><!-- include summernote-ko-KR -->--%>
+    <!-- <script type="text/javascript" src="/assets/_plugins/summernote/lang/summernote-ko-KR.js"></script> -->
+    
+    <script type="text/javascript" src="/assets/_js/message.js"></script>
+
+<%--    <link href="/assets/_plugins/bootstrap-select/bootstrap-select.css" rel="stylesheet" />--%>
+<%--    <script src="/assets/_plugins/bootstrap-select/bootstrap-select.js"></script>--%>
+    
+    <%@ include file="/assets/_common/include.jspf" %>

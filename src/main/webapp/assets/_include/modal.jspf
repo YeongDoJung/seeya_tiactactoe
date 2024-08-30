@@ -1,0 +1,63 @@
+<%@ page pageEncoding="utf-8"%>
+
+<!-- alert -->
+<div class="modal inmodal" id="divModalAlert" tabindex="-1" role="dialog" aria-labelledby="divModalAlertLabel" aria-hidden="true">
+    <div class="modal-dialog fadeInSize">
+        <div class="modal-content" id="divAlertArea"></div>
+    </div>
+</div>
+
+<!-- confirm alert -->
+<div class="modal inmodal" id="divModalConfirmAlert" tabindex="-1" role="dialog" aria-labelledby="divModalConfirmAlertLabel" aria-hidden="true">
+    <div class="modal-dialog fadeInSize">
+        <div class="modal-content" id="divConfirmAlertArea"></div>
+    </div>
+</div>
+
+<!-- loading...1 -->
+<div id="divLoading">
+    <div class="load-dialog">
+        <div class="load-content">
+            <div class="progress progress-striped active">
+                <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+            </div>
+            <span id="load-msg"></span>
+        </div>
+    </div>
+</div>
+
+<!-- 기본 1-->
+<div class="modal inmodal" id="modalPublic" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog fadeInSize" id="modal-default">
+        <div class="modal-content"></div>
+    </div>
+</div>
+
+<!-- 큰 모달  -->
+<div class="modal inmodal" id="modalPublic-lg" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg fadeInSize" id="modal-lg">
+        <div class="modal-content">
+
+        </div>
+    </div>
+</div>
+
+<!-- 중간 모달 -->
+<div class="modal inmodal" id="modalPublic-md" tabindex="-1" role="dialog" aria-labelledby="modalPublic-mdLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md fadeInSize" id="modal-md">
+        <div class="modal-content">
+
+        </div>
+    </div>
+</div>
+
+<!-- 작은 모달 -->
+<div class="modal inmodal" id="modalPublic-sm" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm fadeInSize" id="modal-sm">
+        <div class="modal-content">
+
+        </div>
+    </div>
+</div>
+
+<div class="md-overlay"></div>
